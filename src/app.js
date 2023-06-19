@@ -9,6 +9,7 @@ import authenticationMiddleware from './middlewares/authentication.js';
 // Routes
 import taskRoutes from './routes/tasks.js';
 import authRoutes from './routes/auth.js';
+import auditlogRoutes from './routes/auditlog.js';
 
 // Inicializar la aplicación Express
 const app = express();
@@ -75,6 +76,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 app.use(authenticationMiddleware);
 app.use('/tasks', taskRoutes);
+app.use('/auditlogs', auditlogRoutes);
 
 
 export default app;
