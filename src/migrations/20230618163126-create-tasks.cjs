@@ -32,24 +32,53 @@ module.exports = {
         allowNull: false
       },
       createdBy: {
-        type: Sequelize.STRING,
-        allowNull: false
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        }
       },
       responsible: {
-        type: Sequelize.STRING,
-        allowNull: true
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Users',
+          key: 'id',
+        }
       },
       sharedWith: {
-        type: Sequelize.STRING,
-        allowNull: true
+        type: DataTypes.TEXT, // Use TEXT type to store JSON string
+        allowNull: false,
+        get() {
+          const value = this.getDataValue('sharedWith');
+          return value ? JSON.parse(value) : []; // Parse JSON string into array
+        },
+        set(value) {
+          this.setDataValue('sharedWith', JSON.stringify(value)); // Convert array to JSON string
+        },
       },
       comments: {
-        type: Sequelize.STRING,
-        allowNull: true
+        type: DataTypes.TEXT, // Use TEXT type to store JSON string
+        allowNull: false,
+        get() {
+          const value = this.getDataValue('comments');
+          return value ? JSON.parse(value) : []; // Parse JSON string into array
+        },
+        set(value) {
+          this.setDataValue('comments', JSON.stringify(value)); // Convert array to JSON string
+        },
       },
       tags: {
-        type: Sequelize.STRING,
-        allowNull: true
+        type: DataTypes.TEXT, // Use TEXT type to store JSON string
+        allowNull: false,
+        get() {
+          const value = this.getDataValue('tags');
+          return value ? JSON.parse(value) : []; // Parse JSON string into array
+        },
+        set(value) {
+          this.setDataValue('tags', JSON.stringify(value)); // Convert array to JSON string
+        },
       },
       file: {
         type: Sequelize.STRING,

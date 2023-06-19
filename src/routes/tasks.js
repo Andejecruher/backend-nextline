@@ -43,8 +43,21 @@ const upload = multer({
 });
 // Obtener todas las tareas
 router.get('/', async (req, res) => {
+  const { page = 1, limit = 10, title, description, isPublic } = req.query;
+  const offset = (page - 1) * limit;
   try {
-    const tasks = await taskService.getAllTasks();
+    // Construir condiciones de filtrado basadas en los parámetros de consulta
+    const where = {};
+    if (title) {
+      where.title = title;
+    }
+    if (description) {
+      where.description = description;
+    }
+    if (isPublic) {
+      where.isPublic = isPublic;
+    }
+    const tasks = await taskService.getAllTasks(offset, limit, where, page);
     res.json(tasks);
   } catch (error) {
     console.error(error);
@@ -98,7 +111,6 @@ router.put('/:taskId', upload.single('file'), async (req, res) => {
 
   // Verificar si se ha cargado un nuevo archivo adjunto
   
-
   try {
     if (req.file) {
       const file = req.file;
@@ -112,6 +124,9 @@ router.put('/:taskId', upload.single('file'), async (req, res) => {
       const updatedTask = await taskService.updateTask(taskId, taskData);
       res.json(updatedTask);
     } else {
+      // Si no se ha cargado un nuevo archivo adjunto, actualiza la tarea sin modificar el archivo adjunto
+      const task = await taskService.getTaskById(taskId);
+      taskData.file = task.file;
       const updatedTask = await taskService.updateTask(taskId, taskData);
       res.json(updatedTask);
     }

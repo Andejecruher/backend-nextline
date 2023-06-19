@@ -3,8 +3,22 @@ import Task from '../models/Task.js';
 import AuditLog from '../models/AuditLog.js';
 
 // Obtener todas las tareas
-export async function getAllTasks() {
-  return await Task.findAll();
+export async function getAllTasks(offset, limit, where, page) {
+  const tasks = await Task.findAndCountAll({
+    where,
+    offset,
+    limit: parseInt(limit),
+    // Puedes agregar condiciones de consulta adicionales aquí si es necesario
+  });
+
+  const data = {
+    tasks: tasks.rows,
+    totalItems: tasks.count,
+    currentPage: parseInt(page),
+    totalPages: Math.ceil(tasks.count / limit),
+  };
+
+  return data;
 }
 
 // Obtener una tarea por ID
