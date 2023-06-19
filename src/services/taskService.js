@@ -1,11 +1,49 @@
 // services/taskService.js
+import { Op } from 'sequelize';
+import sequelize from '../db.js';
 import Task from '../models/Task.js';
 import AuditLog from '../models/AuditLog.js';
 
 // Obtener todas las tareas
-export async function getAllTasks(offset, limit, where, page) {
+export async function getAllTasks(offset, limit, where, page, sharedWithCount, daysRemaining, fileFormat) {
+  // Construir condiciones de filtrado basadas en los parámetros de consulta
+  let filter = {
+    ...where,
+  };
+
+  // Filtrar por el número de usuarios con los que se comparte la tarea
+  if (sharedWithCount) {
+    filter = {
+      ...filter,
+      [Op.and]: [
+        sequelize.literal(`JSON_LENGTH(sharedWith) = ${sharedWithCount}`),
+      ],
+    };
+  }
+
+  // Filtrar por la fecha de vencimiento
+  if (daysRemaining) {
+    filter = {
+      ...filter,
+      dueDate: {
+        [Op.lte]: new Date(new Date().getTime() + daysRemaining * 24 * 60 * 60 * 1000),
+      },
+    };
+  }
+
+  // Filtrar por el formato del archivo adjunto
+  if (fileFormat) {
+    filter = {
+      ...filter,
+      file: {
+        [Op.like]: `%.${fileFormat}`,
+      },
+    };
+  }
+
+  // Obtener las tareas
   const tasks = await Task.findAndCountAll({
-    where,
+    where: filter,
     offset,
     limit: parseInt(limit),
   });

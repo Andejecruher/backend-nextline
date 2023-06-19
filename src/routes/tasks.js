@@ -43,7 +43,7 @@ const upload = multer({
 });
 // Obtener todas las tareas
 router.get('/', async (req, res) => {
-  const { page = 1, limit = 10, title, description, isPublic } = req.query;
+  const { page = 1, limit = 10, title, description, isPublic, completionStatus, sharedWithCount, daysRemaining, fileFormat } = req.query;
   const offset = (page - 1) * limit;
   try {
     // Construir condiciones de filtrado basadas en los parámetros de consulta
@@ -57,8 +57,11 @@ router.get('/', async (req, res) => {
     if (isPublic) {
       where.isPublic = isPublic;
     }
+    if (completionStatus) {
+      where.completionStatus = completionStatus;
+    }
     // Obtener las tareas
-    const tasks = await taskService.getAllTasks(offset, limit, where, page);
+    const tasks = await taskService.getAllTasks(offset, limit, where, page, sharedWithCount, daysRemaining, fileFormat);
     res.json(tasks);
   } catch (error) {
     console.error(error);
