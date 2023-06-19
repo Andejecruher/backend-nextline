@@ -63,10 +63,12 @@ router.get('/status', async (req, res) => {
   const token = req.headers.authorization;
 
   if (!token) {
+    // Si no se proporciona el token de autenticación, devolver un error
     return res.status(401).json({ message: 'No se proporcionó un token' });
   }
 
   try {
+    // Verificar y decodificar el token
     const decoded = jwt.verify(token, 'secret_key');
     const userId = decoded.userId;
 
@@ -75,9 +77,10 @@ router.get('/status', async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: 'Usuario no encontrado' });
     }
-
+    // Devolver el estado de autenticación
     res.json({ userId: user.id, email: user.email });
   } catch (error) {
+    // Si el token no es válido, devolver un error
     console.error(error);
     res.status(401).json({ message: 'Token inválido' });
   }

@@ -57,6 +57,7 @@ router.get('/', async (req, res) => {
     if (isPublic) {
       where.isPublic = isPublic;
     }
+    // Obtener las tareas
     const tasks = await taskService.getAllTasks(offset, limit, where, page);
     res.json(tasks);
   } catch (error) {

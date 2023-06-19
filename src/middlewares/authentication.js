@@ -8,6 +8,7 @@ const authenticationMiddleware = (req, res, next) => {
   
 
   if (!token) {
+    // Si no se proporciona el token de autenticación, devolver un error
     return res.status(401).json({ error: 'Token de autenticación no proporcionado' });
   }
 
@@ -19,6 +20,7 @@ const authenticationMiddleware = (req, res, next) => {
     // Continuar con la siguiente función de middleware
     next();
   } catch (error) {
+    // Si el token no es válido, devolver un error
     return res.status(401).json({ error: 'Token de autenticación inválido' });
   }
 }

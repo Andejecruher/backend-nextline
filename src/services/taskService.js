@@ -8,9 +8,9 @@ export async function getAllTasks(offset, limit, where, page) {
     where,
     offset,
     limit: parseInt(limit),
-    // Puedes agregar condiciones de consulta adicionales aquí si es necesario
   });
 
+  // Construir objeto de respuesta
   const data = {
     tasks: tasks.rows,
     totalItems: tasks.count,

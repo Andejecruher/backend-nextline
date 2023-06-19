@@ -1,3 +1,4 @@
+// Modelo de la tabla Task
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../db.js';
 

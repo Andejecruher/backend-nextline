@@ -6,7 +6,7 @@ Esta guía te ayudará a configurar y ejecutar el proyecto Backend Nextline en t
 
 Asegúrate de tener instalado lo siguiente en tu sistema:
 
-- Node.js (versión 14 o superior)
+- Node.js (versión 18.16.0)
 - Gestor de bases de datos MySQL
 
 ## Pasos de instalación
@@ -22,6 +22,8 @@ Asegúrate de tener instalado lo siguiente en tu sistema:
 
    ```
    $ npm install
+   or
+   $ yarn install
    ```
 
 3. **Configurar las variables de entorno**
@@ -34,6 +36,8 @@ Asegúrate de tener instalado lo siguiente en tu sistema:
 
    ```
    $ npm run migrations:run
+   or
+   $ yarn run migrations:run
    ```
 
 5. **Ejecutar los seeders (opcional)**
@@ -42,12 +46,16 @@ Asegúrate de tener instalado lo siguiente en tu sistema:
 
    ```
    $ npm run migrations:seeders:run
+   or
+   $ yarn run migrations:seeders:run
    ```
 
 6. **Iniciar el servidor**
 
    ```
    $ npm run dev
+   or
+   $ yarn run dev
    ```
 
    Esto iniciará el servidor en modo de desarrollo utilizando Nodemon, lo que permitirá que los cambios se reflejen automáticamente sin reiniciar el servidor.
@@ -72,4 +80,4 @@ Este proyecto está bajo la Licencia ISC. Consulta el archivo `LICENSE` para obt
 
 ---
 
-Espero que esta guía te sea útil para montar y ejecutar el proyecto Backend Nextline en tu entorno local. Si tienes alguna pregunta o problema, no dudes en contactarnos. ¡Disfruta programando!
+Espero que esta guía te sea útil para montar y ejecutar el proyecto Backend Nextline en tu entorno local. Si tienes alguna pregunta o problema, no dudes en contactarme. ¡Disfruta programando!. andejecruher@gmail.com

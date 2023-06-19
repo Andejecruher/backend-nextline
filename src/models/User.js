@@ -1,3 +1,4 @@
+// Model name: User
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../db.js';
 

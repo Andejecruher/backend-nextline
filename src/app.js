@@ -10,8 +10,10 @@ import authenticationMiddleware from './middlewares/authentication.js';
 import taskRoutes from './routes/tasks.js';
 import authRoutes from './routes/auth.js';
 
+// Inicializar la aplicación Express
 const app = express();
 
+// Configurar el middleware para analizar el cuerpo de las solicitudes entrantes
 app.use(express.json());
 app.use('/auth', authRoutes);
 
