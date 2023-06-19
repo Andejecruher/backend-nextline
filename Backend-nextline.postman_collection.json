@@ -26,64 +26,8 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "title",
-									"value": "Task 8",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "Description for task 8",
-									"type": "text"
-								},
-								{
-									"key": "completionStatus",
-									"value": "false",
-									"type": "text"
-								},
-								{
-									"key": "dueDate",
-									"value": "2023-06-18T23:35:15.000Z",
-									"type": "text"
-								},
-								{
-									"key": "isPublic",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "createdBy",
-									"value": "3",
-									"type": "text"
-								},
-								{
-									"key": "responsible",
-									"value": "5",
-									"type": "text"
-								},
-								{
-									"key": "sharedWith",
-									"value": "'[1, 2, 3]'",
-									"type": "text"
-								},
-								{
-									"key": "comments",
-									"value": "'[\"Comment 1\", \"Comment 2\", \"Comment 3\"]'",
-									"type": "text"
-								},
-								{
-									"key": "tags",
-									"value": "'[\"Tag 1\", \"Tag 2\", \"Tag 3\"]'",
-									"type": "text"
-								},
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/C:/Users/andej/OneDrive/Imágenes/Capturas de pantalla/Captura de pantalla 2023-04-23 132120.png"
-								}
-							]
+							"mode": "raw",
+							"raw": "{\r\n    \"sharedWith\": [\r\n        1,\r\n        2,\r\n        3\r\n    ],\r\n    \"comments\": [\r\n        \"Comment 1\",\r\n        \"Comment 2\",\r\n        \"Comment 3\"\r\n    ],\r\n    \"tags\": [\r\n        \"Tag 1\",\r\n        \"Tag 2\",\r\n        \"Tag 3\"\r\n    ],\r\n    \"createBy\": 2,\r\n    \"title\": \"Task 1\",\r\n    \"description\": \"Description for task 1\",\r\n    \"completionStatus\": false,\r\n    \"dueDate\": \"2023-06-19T07:36:49.000Z\",\r\n    \"isPublic\": true,\r\n    \"responsible\": 2\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/tasks",
