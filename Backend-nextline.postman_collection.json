@@ -477,6 +477,14 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "GET AUDITLOGS",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	]
 }
