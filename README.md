@@ -74,6 +74,15 @@ Asegúrate de tener instalado lo siguiente en tu sistema:
 - `npm run migrations:seeders --name <seederName>`: Genera un nuevo seeder con el nombre especificado.
 - `npm run migrations:seeders:run`: Ejecuta todos los seeders pendientes.
 
+## Collection Postman
+
+- Abre Postman e importa el archivo JSON haciendo clic en el botón "Import" en la esquina superior izquierda de la interfaz.
+- Selecciona la opción "File" y busca el archivo JSON de Postman en la carpeta raiz del proyecto.
+- Haz clic en "Open" para importar el archivo. Postman procesará el archivo y creará una colección con las solicitudes y configuraciones predefinidas.
+- Una vez importado, verás la colección en el panel izquierdo de Postman. Puedes expandir la colección para ver las solicitudes individuales.
+- Antes de ejecutar las solicitudes, asegúrate de que el servidor Backend Nextline esté en funcionamiento en tu entorno local en la dirección http://localhost:3000, tal como se indica en la guía de instalación.
+- Ahora puedes seleccionar una solicitud de la colección y hacer clic en el botón "Send" para enviar la solicitud al servidor. Postman mostrará la respuesta recibida del servidor, lo que te permitirá verificar el funcionamiento de la API y los resultados obtenidos.
+
 ## Licencia
 
 Este proyecto está bajo la Licencia ISC. Consulta el archivo `LICENSE` para obtener más información.
