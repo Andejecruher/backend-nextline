@@ -14,7 +14,7 @@ Asegúrate de tener instalado lo siguiente en tu sistema:
 1. **Clonar el repositorio**
 
    ```
-   $ git clone https://github.com/tu-usuario/backend-nextline.git
+   $ git clone https://github.com/Andejecruher/backend-nextline.git
    $ cd backend-nextline
    ```
 
